@@ -12,13 +12,15 @@ export default function App() {
 
   function addToFavs() {
     dispatch(addFav(current.message))
-    dispatch(getFavsFromLocalStorage())
+   
+    // dispatch(writeFavsToLocalStorage(current.message))
   }
   const {favs,current,error,loading } = useSelector(state => state)
   
  
   useEffect(()=>{
     dispatch(fetchAnother())
+    // dispatch(getFavsFromLocalStorage())
   },[])
 
   return (
