@@ -6,17 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addFav, fetchAnother } from "./actions";
 
 export default function App() {
-  
-  
+ 
   const dispatch = useDispatch();
 
-  const [sira , setSira] = useState(0)
-  
   function addToFavs() {
     dispatch(addFav(current.message))
-    setSira(sira+1)
+
   }
-  const {favs,current,error,loading} = useSelector(state => state)
+  const {favs,current,error,loading } = useSelector(state => state)
   
  
   useEffect(()=>{
@@ -67,8 +64,8 @@ export default function App() {
         <Route path="/favs">
           <div className="flex flex-col gap-3">
             {favs.length > 0
-              ? favs.map((item) => (
-                <FavItem src ={item} />
+              ? favs.map((item,index) => (
+                <FavItem src ={item} id={index} />
               ))
               : <div className="bg-white p-6 text-center shadow-md">Henüz bir favoriniz yok</div>
             }

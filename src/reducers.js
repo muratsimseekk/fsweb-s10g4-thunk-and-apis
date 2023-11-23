@@ -28,7 +28,7 @@ export function myReducer(state = initial, action) {
       return {...state , favs : [...state.favs , action.payload]}
 
     case FAV_REMOVE:
-      return state;
+      return {...state , favs :  state.favs.filter(item => item !== action.payload)}
 
     case FETCH_SUCCESS:
       return {...state , loading: false , error:'' , current:action.payload}
