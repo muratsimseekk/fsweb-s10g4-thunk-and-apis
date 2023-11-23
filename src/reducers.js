@@ -31,7 +31,7 @@ export function myReducer(state = initial, action) {
       return state;
 
     case FETCH_SUCCESS:
-      return {...state , loading: 'false' , error:'' , current:action.payload}
+      return {...state , loading: false , error:'' , current:action.payload}
 
     case FETCH_LOADING:
       return {...state , loading:true , error:'' , current: null}

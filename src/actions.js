@@ -18,10 +18,10 @@ export const addFav = (info) => {
 export const removeFav = (id) => {
   return { type: FAV_REMOVE, payload: id }
 }
-
+// thunk action 
 export const fetchAnother = () => dispatch => {
-
-  dispatch({type : FETCH_LOADING});
-
+  // thunk function 
+    dispatch({type : FETCH_LOADING});
   axios.get('https://dog.ceo/api/breeds/image/random').then(res=> dispatch({type:FETCH_SUCCESS , payload:res.data})).catch(err=>dispatch({type:FETCH_ERROR,payload:err.message}))
-}
+  }
+  

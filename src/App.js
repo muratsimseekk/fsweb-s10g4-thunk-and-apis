@@ -2,20 +2,24 @@ import React, { useEffect } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Item from "./components/Item";
 import FavItem from "./components/FavItem";
-import { useDispatch } from "react-redux";
-import { fetchAnother } from "./actions";
+import { useDispatch, useSelector } from "react-redux";
+import { addFav, fetchAnother } from "./actions";
 
 export default function App() {
-  const loading = false;
-  const current = null;
-  const favs = [];
-
+  
+  
   const dispatch = useDispatch();
-  function addToFavs() {
-  }
 
+  
+  function addToFavs() {
+    // dispatch(addFav())
+  }
+  const {favs,current,error,loading} = useSelector(state => state)
+  
+ 
   useEffect(()=>{
     dispatch(fetchAnother())
+    
   },[])
 
   return (
@@ -41,7 +45,7 @@ export default function App() {
       <Switch>
         <Route exact path="/">
           {loading && <div className="bg-white p-6 text-center shadow-md">YÜKLENİYOR</div>}
-          {current && <Item data={current} />}
+          {current && <Item data={current.message} />}
 
           <div className="flex gap-3 justify-end py-3">
             <button
