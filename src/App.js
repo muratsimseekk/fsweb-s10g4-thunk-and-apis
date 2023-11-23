@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Item from "./components/Item";
 import FavItem from "./components/FavItem";
@@ -10,16 +10,17 @@ export default function App() {
   
   const dispatch = useDispatch();
 
+  const [sira , setSira] = useState(0)
   
   function addToFavs() {
-    // dispatch(addFav())
+    dispatch(addFav(current.message))
+    setSira(sira+1)
   }
   const {favs,current,error,loading} = useSelector(state => state)
   
  
   useEffect(()=>{
     dispatch(fetchAnother())
-    
   },[])
 
   return (
@@ -67,7 +68,7 @@ export default function App() {
           <div className="flex flex-col gap-3">
             {favs.length > 0
               ? favs.map((item) => (
-                <FavItem key={item.key} id={item.key} title={item.activity} />
+                <FavItem src ={item} />
               ))
               : <div className="bg-white p-6 text-center shadow-md">Henüz bir favoriniz yok</div>
             }

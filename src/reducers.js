@@ -25,7 +25,7 @@ function readFavsFromLocalStorage() {
 export function myReducer(state = initial, action) {
   switch (action.type) {
     case FAV_ADD:
-      return state;
+      return {...state , favs : [...state.favs , action.payload]}
 
     case FAV_REMOVE:
       return state;
