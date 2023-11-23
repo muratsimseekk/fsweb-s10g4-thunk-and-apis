@@ -8,7 +8,6 @@ function FavItem({ src ,id}) {
 
   const removeFromFavs = () => {
     
-
     dispatch(removeFav(src))
   }
 

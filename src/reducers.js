@@ -14,11 +14,12 @@ const initial = {
   loading: true,
 };
 
-function writeFavsToLocalStorage(state) {
+export function writeFavsToLocalStorage(state) {
+  
   localStorage.setItem("s10g4", JSON.stringify(state.favs));
 }
 
-function readFavsFromLocalStorage() {
+export function readFavsFromLocalStorage() {
   return JSON.parse(localStorage.getItem("s10g4"));
 }
 
@@ -40,7 +41,7 @@ export function myReducer(state = initial, action) {
       return {...state , loading : false , error:action.payload , current: null}
 
     case GET_FAVS_FROM_LS:
-      return state;
+      return state
 
     default:
       return state;
