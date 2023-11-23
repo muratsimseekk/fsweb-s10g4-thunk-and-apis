@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Item from "./components/Item";
 import FavItem from "./components/FavItem";
+import { useDispatch } from "react-redux";
+import { fetchAnother } from "./actions";
 
 export default function App() {
   const loading = false;
   const current = null;
   const favs = [];
 
+  const dispatch = useDispatch();
   function addToFavs() {
   }
 
+  useEffect(()=>{
+    dispatch(fetchAnother())
+  },[])
 
   return (
     <div className="wrapper max-w-xl mx-auto px-4">
